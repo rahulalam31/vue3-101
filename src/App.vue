@@ -1,26 +1,33 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <main>
+    <div>
+    <h4>The Current Count is...</h4>
+    <h1>{{ count }}</h1>
+    <button @click="count--">-</button>
+    <button @click="count++">+</button>
+  </div>
+  </main>
+  
 </template>
 
-<script>
-import HelloWorld from './components/HelloWorld.vue'
+<script setup>
+import { ref } from 'vue';
 
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+  const count = ref(0);
+
+
 </script>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+<style scoped>
+main {
+  background-color: aquamarine;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+div {
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
 }
 </style>

@@ -9,6 +9,7 @@
           cols="30"
           rows="10"
         ></textarea>
+        <p>{{ errorMessage }}</p>
         <button @click="addNote">Add Note</button>
         <button class="close" @click="showModal = false">Close</button>
       </div>
@@ -40,6 +41,7 @@ import { ref } from "vue";
 
 const showModal = ref(false);
 const newNote = ref("");
+const errorMessage = ref("");
 const notes = ref([]);
 
 function getRandomColor() {
@@ -47,6 +49,9 @@ function getRandomColor() {
 }
 
 const addNote = () => {
+  if(newNote.value.trim.length < 10) {
+    return errorMessage.value = "Notes needs to be 10 characters or more"
+  }
   notes.value.push({
     id: Math.floor(Math.random() * 1000000),
     text: newNote.value,
@@ -140,5 +145,8 @@ header button {
 .modal .close {
   background-color: red;
   margin-top: 7px;
+}
+.modal p {
+  color: red;
 }
 </style>
